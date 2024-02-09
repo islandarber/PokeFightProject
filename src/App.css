@@ -1,0 +1,68 @@
+body {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url(https://api.wallpapers.ai/static/downloads/5504d043007346d5b59f028cd21d8365/upscaled/000000_336894884_kdpmpp2m15_PS7.5_Create_Pok_mon-inspired_desktop_wallpaper_a_scenic_landscape_with_rolling_hills,_lush_greenery,_and_pathways,_echoing_the_franchis_[upscaled].jpg) no-repeat center center fixed;
+  font-family: 'Pokemon Solid', sans-serif;
+  letter-spacing: 5px;
+                                               
+}
+/* pokemons page */
+
+.homepage-pokemons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem;
+}
+.homepage-pokemons h1{
+  text-align: center;
+  font-size: 7rem;
+  color: #78f708;
+  text-shadow: 2px 2px 2px #000;
+}
+.pokemons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+.homepage-pokemons ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pokemon-card {
+  text-decoration: none;
+  color: #78f708;
+  border: 1px solid #000;
+  background-color: #00000081;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  max-width:60%;
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-card:hover {
+  background-color: #be13fd8f;
+}
+
+.pokemon-card a{
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+}
+
+
+/* pokemon one */
+
+
+
+/* pokemon info */
+
