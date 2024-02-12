@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router';
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([])
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
 
   useEffect(() => {
     getPokemons().then((data) => {
       setPokemons(data)
+      setLoading(false);
     })
   }, [])
 
@@ -19,11 +21,12 @@ const Pokemons = () => {
   return (
     <div className="homepage-pokemons">
       <h1>Pokemons</h1>
-      <div className='pokemons-grid'>
+      {!loading ?<div className='pokemons-grid'>
         {pokemons.map((pokemon) => (
             <a className='pokemon-card' key={pokemon.id} href={`/${pokemon.id}`}>{pokemon.name.english}</a>
         ))}
         </div>
+        : <p>Loading...</p>}
     </div>
   )
 }
