@@ -1,11 +1,18 @@
 import React from 'react'
 
-const Battle = () => {
+const Battle = ({Pokemon1, Pokemon2}) => {
+
+
   
 
 
   return (
-    <div>Battle</div>
+    <div>
+      <h1>Battle</h1>
+      <p>{Pokemon1}</p>
+      VS
+      <p>{Pokemon2}</p>
+    </div>
   )
 }
 
