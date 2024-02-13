@@ -23,7 +23,7 @@ const Pokemons = () => {
       <h1>Pokemons</h1>
       {!loading ?<div className='pokemons-grid'>
         {pokemons.map((pokemon) => (
-            <a className='pokemon-card' key={pokemon.id} href={`/${pokemon.id}`}>{pokemon.name.english}</a>
+            <a className='pokemon-card' key={pokemon.id} href={`/pokemons/${pokemon.id}`}>{pokemon.name.english}</a>
         ))}
         </div>
         : <p>Loading...</p>}

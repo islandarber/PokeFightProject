@@ -3,31 +3,69 @@ import { useNavigate } from 'react-router-dom';
 import { getPokemons } from '../components/getPokemons';
 import axios from 'axios';
 
-
 const SelectPokemon = ({ label, options, onSelectChange }) => {
+  const handleClickRandom = (e) => {
+    e.preventDefault();
+
+    const randomPokemon = options[Math.floor(Math.random() * options.length)];
+    onSelectChange(randomPokemon.name.english);
+  };
+
   return (
-    <div>
+    <div className='select-player'>
       <h2>{label}</h2>
-      <form action="">
-        <select name="pokemon" id="" onChange={(e) => onSelectChange(e.target.value)}>
+      <form>
+        <select onChange={(e) => onSelectChange(e.target.value)}>
           {options.map((pokemon) => (
             <option key={pokemon.name.english} value={pokemon.name.english}>
               {pokemon.name.english}
             </option>
           ))}
         </select>
+        <button onClick={(e) => handleClickRandom(e)}>Random</button>
       </form>
     </div>
   );
 };
 
-const ChooseYourPokemon = () => {
+const PokemonDetails = ({ pokemon, image }) => (
+  <div className="pokemon-details">
+    <img src={image} alt={pokemon.name.english} />
+    <ul>
+      <li>
+        <h3>{pokemon.name.english}</h3>
+        <p>Type: {pokemon.type.join(', ')}</p>
+        <h2>Base HP: {pokemon.base.HP}</h2>
+        <ul>
+          {Object.entries(pokemon.base).map(([stat, value]) => (
+            <li key={stat}>
+              <strong>{stat}:</strong> {value}
+            </li>
+          ))}
+        </ul>
+      </li>
+    </ul>
+  </div>
+);
+
+const ChooseYourPokemon = ({setPokemon1, setPokemon2}) => {
   const [pokemons, setPokemons] = useState([]);
   const [player, setPlayer] = useState(1);
   const [selectedPokemon, setSelectedPokemon] = useState('');
   const [selectedPokemon2, setSelectedPokemon2] = useState('');
   const [pokemonImage, setPokemonImage] = useState('');
+  const [pokemonImage2, setPokemonImage2] = useState('');
   const navigate = useNavigate();
+
+
+  const handleConfirmClick = () => {
+    if (player === 1) {
+      setPokemon1(selectedPokemon);
+    } else {
+      setPokemon1(selectedPokemon);
+      setPokemon2(selectedPokemon2);
+    }
+  }
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -41,6 +79,36 @@ const ChooseYourPokemon = () => {
     fetchPokemons();
   }, []);
 
+  useEffect(() => {
+    try {
+      const fetchPokemon = async () => {
+        if (selectedPokemon) {
+          const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon.toLowerCase()}`);
+          setPokemonImage(response.data.sprites.front_default);
+        }
+      };
+      fetchPokemon();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [selectedPokemon]);
+
+  useEffect(() => {
+    try {
+      const fetchPokemon = async () => {
+        if (selectedPokemon2) {
+          const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon2.toLowerCase()}`);
+          setPokemonImage2(response.data.sprites.front_default);
+        }
+      };
+      fetchPokemon();
+    } catch (error) {
+      console.error(error);
+    }
+
+  }, [selectedPokemon2])
+  
+
   const handlePlayerSelect = (value) => {
     setPlayer(parseInt(value));
   };
@@ -49,39 +117,16 @@ const ChooseYourPokemon = () => {
     setSelectedPokemon(pokemon);
   };
 
-  const handleSelect1Pokemon = (pokemon) => {
-    setSelectedPokemon(pokemon);
-  };
-
-  const handleSelect2Pokemon = (pokemon) => {
+  const handleSelectPokemon2 = (pokemon) => {
     setSelectedPokemon2(pokemon);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission as needed
-  };
-
-  useEffect(() => {
-    try {
-      const fetchPokemon = async () => {
-        {const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon.toLowerCase()}`);}
-        setPokemonImage(response.data.sprites.front_default);
-        
-      };
-      fetchPokemon();
-      
-    } catch (error) {
-      
-    }
-  }, [selectedPokemon]);
-
   return (
-    <div>
-      <h1>Choose your pokemon</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="1-2player"></label>
-        <select name="pokemon" id="" onChange={(e) => handlePlayerSelect(e.target.value)}>
+    <div className='choose-your-pokemon'>
+      <h1>Choose your Pokemon</h1>
+      <form>
+        <label htmlFor="1-2player">How many players:</label>
+        <select onChange={(e) => handlePlayerSelect(e.target.value)}>
           <option value="1">1 Player</option>
           <option value="2">2 Players</option>
         </select>
@@ -89,45 +134,19 @@ const ChooseYourPokemon = () => {
 
       {player === 1 ? (
         <div>
-          <SelectPokemon label="Select your pokemon" options={pokemons} onSelectChange={handleSelectPokemon} />
-          <div>
-            <img src={pokemonImage} alt={selectedPokemon} />
-            <ul>
-              <li>
-              {pokemons&& pokemons.filter((pokemon) => (
-                pokemon.name.english === selectedPokemon
-              )).map((pokemon) => (
-                <div>
-                  <h1>{pokemon.name.english}</h1>
-                  <p>Type: {pokemon.type.join(', ')}</p>
-                  <h2>Base HP: {pokemon.base.HP}</h2>
-                  <ul>
-                    {Object.entries(pokemon.base).map(([stat, value]) => ( 
-                        <li key={stat}>
-                          <strong>{stat}:</strong> {value}
-                        </li>
-                    ))}
-                  </ul>
-                </div>
-
-              ))}
-              </li>
-              </ul>
-          </div>
+          <SelectPokemon label="Select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon(pokemon, setPokemonImage)} />
+          {selectedPokemon && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon)} image={pokemonImage} />}
         </div>
       ) : (
         <>
-          <SelectPokemon label="Player 1 select your pokemon" options={pokemons} onSelectChange={handleSelect1Pokemon} />
-          <div>
-            <h2>{selectedPokemon}</h2>
-          </div>
+          <SelectPokemon label="Player 1 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon(pokemon)} />
+          {selectedPokemon && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon)} image={pokemonImage} />}
 
-          <SelectPokemon label="Player 2 select your pokemon" options={pokemons} onSelectChange={handleSelect2Pokemon} />
-          <div>
-            <h2>{selectedPokemon2}</h2>
-          </div>
+          <SelectPokemon label="Player 2 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon2(pokemon)} />
+          {selectedPokemon2 && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon2)} image={pokemonImage2} />}
         </>
       )}
+      <button onClick={() => handleConfirmClick()}>Confirm Selection</button>
       <button onClick={() => navigate('/battle')}>Start</button>
     </div>
   );
