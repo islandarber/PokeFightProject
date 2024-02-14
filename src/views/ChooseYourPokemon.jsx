@@ -60,6 +60,9 @@ const ChooseYourPokemon = ({setPokemon1, setPokemon2}) => {
 
 
   const handleConfirmClick = () => {
+    if (selectedPokemon === selectedPokemon2){
+      return alert('You cannot fight against yourself, go to therapy instead!');
+    }
     if (player === 1) {
       setPokemon1(selectedPokemon);
     } else {

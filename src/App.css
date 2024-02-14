@@ -134,6 +134,93 @@ body {
 
 /* pokemon info */
 
+.pokemon-info-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: #1e1e1c8f;
+  border-radius: 5px;
+}
+
+.pokemon-info-details h1{
+  text-align: center;
+  font-size: 3rem;
+  color: #78f708;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.pokemon-info-details h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #c300ff;
+  text-shadow: 2px 2px 2px #000;
+  margin: 0;
+}
+
+.pokemon-info-details li {
+  text-align: center;
+  font-size: 2rem;
+  color: #78f708;
+  text-shadow: 2px 2px 2px #000;
+  margin: 0;
+}
+ /* battle */
+
+ .BATTLe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: #0707078f;
+  border-radius: 5px;
+ }
+
+
+
+ .pokemoninBattle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: #e3e31d8f;
+  border-radius: 5px;
+ }
+
+ .pokemoninBattle h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #78f708;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.pokemoninBattle p{
+  text-align: center;
+  font-size: 1rem;
+  color: #78f708;
+  text-shadow: 2px 2px 2px #000;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* choose your pokemon */
 .choose-your-pokemon {
@@ -297,3 +384,4 @@ button:hover {
   text-shadow: 2px 2px 2px #000;
   margin: 0;
 }
+

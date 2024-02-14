@@ -6,12 +6,15 @@ const Battle = ({Pokemon1, Pokemon2}) => {
 
   const [pokemonData1, setPokemonData1] = useState(null);
   const [pokemonData2, setPokemonData2] = useState(null);
+  const [round, setRound] = useState(1);	
+  const [score, setScore] = useState(0);
+  const [winner, setWinner] = useState('');
+  const [loser, setLoser] = useState('');
+
   const [error, setError] = useState('');
 
-  const logData = (data, message) => {
-    console.log(message, data);
-    return null; 
-  };
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,13 +40,11 @@ const Battle = ({Pokemon1, Pokemon2}) => {
       } catch (error) {
 
         setError(error.message);
-        console.log('Error fetching data:', error);
       }
     };
 
     fetchData();
   }, [Pokemon1, Pokemon2]);
-  console.log("WILSOOOOOOOOOOOOOOOOOOOOOOOOOOON:", Pokemon1, Pokemon2)
   
 
   if (error) {
@@ -54,39 +55,47 @@ const Battle = ({Pokemon1, Pokemon2}) => {
     return <div>Loading...</div>
   }
 
+  const handleAttack = () => {
+
+    const mathRandom = Math.floor(Math.random() * 10);
+    console.log('mathRandom:', mathRandom);
+   
+
+    setRound((prev) => prev + 1);
+    setPokemonData1((prev) => ({ ...prev, base: { ...prev.base, HP: prev.base.HP - 10 } }));
+  };
+
 
   return (
-    <div>
+    <div className='BATTLe'>
       <h1>Battle</h1>
-      
-      <div>
-        <h2>{pokemonData1.name.english}</h2>
-        {logData(pokemonData1, 'ARE YOU THEERE MATE')}
-        <p>Type: {pokemonData1.type.join(', ')}</p>
-        <h2>Base HP: {pokemonData1.base.HP}</h2>
-        <ul>
-          {Object.entries(pokemonData1.base).map(([stat, value]) => (
-            <li key={stat}>
-              <strong>{stat}:</strong> {value}
-            </li>
-          ))}
-        </ul>
+      <h2>Round: {round}</h2>
+        <div className='pokemoninBattle'>
+          <h2>{pokemonData1.name.english}</h2>
+          <p>Type: {pokemonData1.type.join(', ')}</p>
+          <h2>Base HP: {pokemonData1.base.HP}</h2>
+            {Object.entries(pokemonData1.base).map(([stat, value]) => (
+              <p key={stat}>
+                <strong>{stat}:</strong> {value}
+              </p>
+            ))}
+        
+        </div>
+        VS
+        <div className='pokemoninBattle'>
+          <h2>{pokemonData2.name.english}</h2>
+          <p>Type: {pokemonData2.type.join(', ')}</p>
+          <h2>Base HP: {pokemonData2.base.HP}</h2>
+        
+            {Object.entries(pokemonData2.base).map(([stat, value]) => (
+              <p key={stat}>
+                <strong>{stat}:</strong> {value}
+              </p>
+            ))}
+        
+        </div>
+        <button onClick={handleAttack}>Attack</button>
       </div>
-      VS
-      <div>
-        <h2>{pokemonData2.name.english}</h2>
-        {logData(pokemonData2, 'IS THERE ANYONE ALIVE OUT THERE?')}
-        <p>Type: {pokemonData2.type.join(', ')}</p>
-        <h2>Base HP: {pokemonData2.base.HP}</h2>
-        <ul>
-          {Object.entries(pokemonData2.base).map(([stat, value]) => (
-            <li key={stat}>
-              <strong>{stat}:</strong> {value}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   )
 }
 

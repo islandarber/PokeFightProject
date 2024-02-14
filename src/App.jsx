@@ -30,7 +30,7 @@ function App() {
         <Route path="/chooseYourPokemon" element={<ChooseYourPokemon setPokemon1={setPokemon1} setPokemon2={setPokemon2} />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/pokemons/:id" element={<PokemonOne />} />
-        <Route path="/pokemons/:id/:info" element={<PokemonInfo />} />
+        <Route path="/pokemons/:id/info" element={<PokemonInfo />} />
       </Routes>
     </>
   );

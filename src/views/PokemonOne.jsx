@@ -30,7 +30,7 @@ const PokemonOne = () => {
             </li>
         ))}
       </ul>
-      <a href={`/${pokemon.id}/info`}>More info</a>
+      <a href={`/pokemons/${pokemon.id}/info`}>More info</a>
     </div>
   );
 };

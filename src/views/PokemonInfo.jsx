@@ -16,7 +16,7 @@ const PokemonInfo = () => {
 
   return (
 
-    <div>
+    <div className="pokemon-info-details">
       <h1>Pokemon Detailed Info</h1>
       <h2>Names</h2>
       {pokemon.name && <ul>
@@ -31,7 +31,7 @@ const PokemonInfo = () => {
       </ul>}
 
       <h2>Base</h2>
-      {pokemon.base && <ul>
+      {pokemon.base && <ul className="listingthepowers">
         <li>HP: {pokemon.base.HP}</li>
         <li>Attack: {pokemon.base.Attack}</li>
         <li>Defense: {pokemon.base.Defense}</li>
