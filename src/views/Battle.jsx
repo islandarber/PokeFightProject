@@ -69,31 +69,33 @@ const Battle = ({Pokemon1, Pokemon2}) => {
   return (
     <div className='BATTLe'>
       <h1>Battle</h1>
-      <h2>Round: {round}</h2>
-        <div className='pokemoninBattle'>
-          <h2>{pokemonData1.name.english}</h2>
-          <p>Type: {pokemonData1.type.join(', ')}</p>
-          <h2>Base HP: {pokemonData1.base.HP}</h2>
-            {Object.entries(pokemonData1.base).map(([stat, value]) => (
-              <p key={stat}>
-                <strong>{stat}:</strong> {value}
-              </p>
-            ))}
+        <h2>Round: {round}</h2>
+      <div className='pokemonsBAttle'>
+          <div className='pokemoninBattle'>
+            <h2>{pokemonData1.name.english}</h2>
+            <p>Type: {pokemonData1.type.join(', ')}</p>
+            <h2>Base HP: {pokemonData1.base.HP}</h2>
+              {Object.entries(pokemonData1.base).map(([stat, value]) => (
+                <p key={stat}>
+                  <strong>{stat}:</strong> {value}
+                </p>
+              ))}
         
-        </div>
-        VS
-        <div className='pokemoninBattle'>
-          <h2>{pokemonData2.name.english}</h2>
-          <p>Type: {pokemonData2.type.join(', ')}</p>
-          <h2>Base HP: {pokemonData2.base.HP}</h2>
+          </div>
+          VS
+          <div className='pokemoninBattle'>
+            <h2>{pokemonData2.name.english}</h2>
+            <p>Type: {pokemonData2.type.join(', ')}</p>
+            <h2>Base HP: {pokemonData2.base.HP}</h2>
         
-            {Object.entries(pokemonData2.base).map(([stat, value]) => (
-              <p key={stat}>
-                <strong>{stat}:</strong> {value}
-              </p>
-            ))}
+              {Object.entries(pokemonData2.base).map(([stat, value]) => (
+                <p key={stat}>
+                  <strong>{stat}:</strong> {value}
+                </p>
+              ))}
         
-        </div>
+          </div>
+      </div>
         <button onClick={handleAttack}>Attack</button>
       </div>
   )

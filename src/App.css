@@ -172,6 +172,7 @@ body {
 
  .BATTLe {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 2rem auto;
@@ -181,7 +182,14 @@ body {
   border-radius: 5px;
  }
 
+ .pokemonsBAttle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 
+ 
+ }
 
  .pokemoninBattle {
   display: flex;
