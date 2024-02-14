@@ -16,6 +16,7 @@ const SelectPokemon = ({ label, options, onSelectChange }) => {
       <h2>{label}</h2>
       <form>
         <select onChange={(e) => onSelectChange(e.target.value)}>
+        <option value="" disabled selected>Select a Pokemon</option>
           {options.map((pokemon) => (
             <option key={pokemon.name.english} value={pokemon.name.english}>
               {pokemon.name.english}
@@ -33,16 +34,16 @@ const PokemonDetails = ({ pokemon, image }) => (
     <img src={image} alt={pokemon.name.english} />
     <ul>
       <li>
-        <h3>{pokemon.name.english}</h3>
+        <h2>{pokemon.name.english}</h2>
         <p>Type: {pokemon.type.join(', ')}</p>
         <h2>Base HP: {pokemon.base.HP}</h2>
-        <ul>
+        <div className='stats-list'>
           {Object.entries(pokemon.base).map(([stat, value]) => (
-            <li key={stat}>
+            <p key={stat} className='stats-list'>
               <strong>{stat}:</strong> {value}
-            </li>
+            </p>
           ))}
-        </ul>
+        </div>
       </li>
     </ul>
   </div>
@@ -139,11 +140,12 @@ const ChooseYourPokemon = ({setPokemon1, setPokemon2}) => {
         </div>
       ) : (
         <>
-          <SelectPokemon label="Player 1 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon(pokemon)} />
-          {selectedPokemon && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon)} image={pokemonImage} />}
-
-          <SelectPokemon label="Player 2 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon2(pokemon)} />
-          {selectedPokemon2 && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon2)} image={pokemonImage2} />}
+          <div className='selected-pokemonDisplay'>
+            <SelectPokemon label="Player 1 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon(pokemon)} />
+            {selectedPokemon && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon)} image={pokemonImage} />}
+            <SelectPokemon label="Player 2 select your Pokemon" options={pokemons} onSelectChange={(pokemon) => handleSelectPokemon2(pokemon)} />
+            {selectedPokemon2 && <PokemonDetails pokemon={pokemons.find((p) => p.name.english === selectedPokemon2)} image={pokemonImage2} />}
+          </div>
         </>
       )}
       <button onClick={() => handleConfirmClick()}>Confirm Selection</button>
