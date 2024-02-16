@@ -24,7 +24,7 @@ body {
   text-decoration: none;
   color: #f7eb08;
   text-shadow: 2px 2px 2px #000;
-  font-size: 3rem;
+  font-size: 1rem;
   letter-spacing: 5px;
 
 }
@@ -47,14 +47,14 @@ body {
 
 .homepage h1{
   text-align: center;
-  font-size: 6rem;
+  font-size: 3rem;
   color: #5cf708;
   text-shadow: 2px 2px 2px #000;
 }
 
 .homepage p{
   text-align: center;
-  font-size: 4rem;
+  font-size: 2rem;
   color: #d0ff00;
   text-shadow: 2px 2px 2px #000;
   letter-spacing: 6px;
@@ -88,7 +88,7 @@ body {
 }
 .homepage-pokemons h1{
   text-align: center;
-  font-size: 7rem;
+  font-size: 3rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
 }
@@ -110,7 +110,7 @@ body {
   background-color: #00000081;
   padding: 1rem;
   border-radius: 10px;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-top: 0.5rem;
   max-width:60%;
   display: flex;
@@ -148,14 +148,14 @@ body {
 
 .pokemon-info-details h1{
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
 }
 
 .pokemon-info-details h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #c300ff;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
@@ -163,7 +163,7 @@ body {
 
 .pokemon-info-details li {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
@@ -182,6 +182,21 @@ body {
   border-radius: 5px;
  }
 
+  .BATTLe h1{
+    text-align: center;
+    font-size: 2rem;
+    color: #78f708;
+    text-shadow: 2px 2px 2px #000;
+    margin: 0;
+  }
+
+  .BATTLe h2 {
+    font: 1.5rem;
+    color: #c300ff;
+    text-shadow: 2px 2px 2px #000;
+    margin: 0;
+  }
+
  .pokemonsBAttle {
   display: flex;
   align-items: center;
@@ -199,23 +214,72 @@ body {
   margin: 2rem auto;
   max-width: 1200px;
   padding: 2rem;
-  background-color: #e3e31d8f;
+  background-color: #000000c4;
   border-radius: 5px;
  }
 
  .pokemoninBattle h2 {
   text-align: center;
-  font-size: 2rem;
-  color: #78f708;
+  font-size: 1.5rem;
+  color: #1844f4;
   text-shadow: 2px 2px 2px #000;
+}
+
+.pokemoninBattle img {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
 }
 
 .pokemoninBattle p{
   text-align: center;
   font-size: 1rem;
+  color: #f7ef08d2;
+  text-shadow: 2px 2px 2px #000;
+  margin: 0;
+}
+
+
+.GAMEOVER {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: #0000008f;
+  border-radius: 5px;
+
+}
+
+.GAMEOVER h1{
+  text-align: center;
+  font-size: 2rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
+}
+
+.winner-loser {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  max-width: 80%;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.winner-loser h1 {
+  font-size: 2rem;
+  color: #56f418;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.winner-loser p {
+  font-size: 3rem;
+  color: #f7ef08d2;
+  text-shadow: 2px 2px 2px #000;
 }
 
 
@@ -245,14 +309,14 @@ body {
 
 .choose-your-pokemon h1{
   text-align: center;
-  font-size: 5rem;
+  font-size: 2rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
 }
 
 .choose-your-pokemon h3{
   text-align: center;
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: #d0ff00;
   text-shadow: 2px 2px 2px #000;
   letter-spacing: 6px;
@@ -268,7 +332,7 @@ body {
 
 .choose-your-pokemon label{
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #d0ff00;
   text-shadow: 2px 2px 2px #000;
   letter-spacing: 6px;
@@ -276,7 +340,7 @@ body {
 
 .choose-your-pokemon select {
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 1rem;
   background-color: #0000008f;
   color:#d0ff00;
   border: 1px solid #090904;
@@ -299,7 +363,7 @@ body {
 
 button {
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 1rem;
   background-color: #0dff258f;
   color:#000000;
   border: 1px solid #090904;
@@ -340,7 +404,7 @@ button:hover {
 
 .pokemon-details p{
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
@@ -361,10 +425,20 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin: 2rem auto;
+  gap: 3rem ;
   max-width: 1200px;
   padding: 2rem;
-  background-color: #1e1e1c8f;
   border-radius: 5px;
+}
+
+.scores1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e1c8f;
+  padding: 2rem;
+
 }
 
 .selected-pokemonDisplay {
@@ -376,9 +450,18 @@ button:hover {
 
 /* Leaderboard */
 
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+
+}
+
 .leaderboard h1 {
   text-align: center;
-  font-size: 5rem;
+  font-size: 2rem;
   color: #78f708;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
@@ -387,8 +470,8 @@ button:hover {
 
 .game-card p{
   text-align: center;
-  font-size: 2rem;
-  color: #78f708;
+  font-size: 1rem;
+  color: #b60000;
   text-shadow: 2px 2px 2px #000;
   margin: 0;
 }

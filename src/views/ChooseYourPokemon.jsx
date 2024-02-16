@@ -69,6 +69,7 @@ const ChooseYourPokemon = ({setPokemon1, setPokemon2}) => {
       setPokemon1(selectedPokemon);
       setPokemon2(selectedPokemon2);
     }
+    navigate('/battle');
   }
 
   useEffect(() => {
@@ -151,8 +152,7 @@ const ChooseYourPokemon = ({setPokemon1, setPokemon2}) => {
           </div>
         </>
       )}
-      <button onClick={() => handleConfirmClick()}>Confirm Selection</button>
-      <button onClick={() => navigate('/battle')}>Start</button>
+      <button onClick={() => handleConfirmClick()}>Start!</button>
     </div>
   );
 };
